@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'category_meals_screen.dart';
+
 
 class CategoryItem extends StatelessWidget {
   final String id;
@@ -18,7 +20,7 @@ class CategoryItem extends StatelessWidget {
     //   fullscreenDialog: true),
     //   );
     Navigator.of(ctx).pushNamed(
-      '/category-meals', 
+      CategoryMealScreen.routeName, 
     arguments: {'id':id, 'title': title,},);
 
   }
