@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import './dummy_data.dart';
+import '../dummy_data.dart';
 
 
 
