@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mealsapp/models/meal.dart';
+import 'package:mealsapp/screens/meal_detail_screen.dart';
 
 class MealItem extends StatelessWidget {
-
+  final String id;
   final String title;
   final String imageUrl;
   final int duration;
@@ -10,6 +11,7 @@ class MealItem extends StatelessWidget {
   final Affordability affordability;
 
   MealItem({
+    @required this.id,
     @required this.title,
     @required this.affordability,
     @required this.complexity,
@@ -55,14 +57,17 @@ class MealItem extends StatelessWidget {
 
   }
 
-  void selectMeal() {
+  void selectMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      MealDetailScreen.routeName, 
+      arguments: id);
 
   }
 
   @override
   Widget build(BuildContext context) {
     return  InkWell(
-      onTap: selectMeal,
+      onTap: () =>selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15) ),
@@ -79,6 +84,7 @@ class MealItem extends StatelessWidget {
                 height: 250, 
                 width: double.infinity,
                 fit: BoxFit.cover,),
+              
                 ),
                 Positioned(
                   bottom: 20,
@@ -103,42 +109,45 @@ class MealItem extends StatelessWidget {
             ],
             ),
             Padding(
-                padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
                 child: Row(
-                    children: <Widget>[
-                      Wrap(
-                         alignment: WrapAlignment.end,
-                        children: <Widget>[
-                          Row( children: <Widget>[
-                        Icon(Icons.schedule,),
-                        SizedBox(width: 6,),
-                        Text('$duration min'),
-                                      ]),
-                                    ],
-                      ),
-            Wrap(
-              alignment: WrapAlignment.end,
-              children: <Widget>[
-            Row( children: <Widget>[
-              Icon(Icons.work,),
-              SizedBox(width: 6,),
-              Text(complexityText,),
-                            ]),
-                          ],
-            ),
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   children: <Widget>[
             Wrap(
                alignment: WrapAlignment.end,
               children: <Widget>[
-              Row( children: <Widget>[
-              Icon(Icons.attach_money,),
+                Row( children: <Widget>[
+              Icon(Icons.schedule,),
               SizedBox(width: 6,),
-              Text(affordabilityText, ),
-                            ]),
-                          ],
+              Text('$duration min'),
+              
+              ]),
+            ],
             ),
-                    ],
-                  ),
-              )
+                Wrap(
+                  alignment: WrapAlignment.spaceAround,
+                  children: <Widget>[
+                Row( children: <Widget>[
+                  Icon(Icons.work,),
+                  SizedBox(width: 6,),
+                  Text(complexityText,),
+                  
+                  ]),
+                ],
+                ),
+                Wrap(
+                   alignment: WrapAlignment.end,
+                  children: <Widget>[
+                  Row( children: <Widget>[
+                  Icon(Icons.attach_money,),
+                  SizedBox(width: 4,),
+                  Text(affordabilityText, ),
+                  ]),
+                ],
+                ),
+                        ],
+                      ),
+                  )
           ],),
       ),
     );
