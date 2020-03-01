@@ -30,7 +30,7 @@ class CategoryMealScreen extends StatelessWidget {
    
     return Scaffold(
         appBar: AppBar(
-          title: Text(categoryTitle),
+          title: Text(categoryTitle, style:TextStyle(color: Colors.black),),
           backgroundColor: Colors.amber,
           ),
           body: ListView.builder(itemBuilder: (ctx,index) {

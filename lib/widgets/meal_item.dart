@@ -106,27 +106,36 @@ class MealItem extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: Row(
                     children: <Widget>[
-                      Expanded(
-            child: Row( children: <Widget>[
-            Icon(Icons.schedule,),
-            SizedBox(width: 6,),
-            Text('$duration min'),
-                        ]),
+                      Wrap(
+                         alignment: WrapAlignment.end,
+                        children: <Widget>[
+                          Row( children: <Widget>[
+                        Icon(Icons.schedule,),
+                        SizedBox(width: 6,),
+                        Text('$duration min'),
+                                      ]),
+                                    ],
                       ),
-            Expanded(
-            child: Row( children: <Widget>[
-            Icon(Icons.work,),
-            SizedBox(width: 6,),
-            Text(complexityText,),
-                        ]),
-                      ),
-            Expanded(
-            child: Row( children: <Widget>[
-            Icon(Icons.attach_money,),
-            SizedBox(width: 6,),
-            Text(affordabilityText, ),
-                        ]),
-                      ),
+            Wrap(
+              alignment: WrapAlignment.end,
+              children: <Widget>[
+            Row( children: <Widget>[
+              Icon(Icons.work,),
+              SizedBox(width: 6,),
+              Text(complexityText,),
+                            ]),
+                          ],
+            ),
+            Wrap(
+               alignment: WrapAlignment.end,
+              children: <Widget>[
+              Row( children: <Widget>[
+              Icon(Icons.attach_money,),
+              SizedBox(width: 6,),
+              Text(affordabilityText, ),
+                            ]),
+                          ],
+            ),
                     ],
                   ),
               )
