@@ -10,13 +10,8 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: const Text('DeliMeal'),
-              ),
-            body: GridView(
+    return 
+           GridView(
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200,childAspectRatio: 3/2,
             crossAxisSpacing: 20,
@@ -34,9 +29,7 @@ class CategoriesScreen extends StatelessWidget {
 
 
           
-          ),
-      ),
-    );
+          );
 
 
       
